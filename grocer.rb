@@ -3,10 +3,8 @@ def consolidate_cart(cart)
   #first figure out how to convert an array into a hash 
   #next figure out how to consolidate the items
   #add count key and value into the hash
-  hashed_cart = cart.reduce() do |memo, (key, value)|
-    memo[key] = value
-    memo
-  end
+  converted_hash = cart.each {|h| h[:count] = 1}
+  converted_hash
 end
 
 def apply_coupons(cart, coupons)
