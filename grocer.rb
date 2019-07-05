@@ -4,7 +4,7 @@
   #next figure out how to consolidate the items
   #add count key and value into the hash
     #Use the count enumerable
-  new_hash = {}
+  
   
 end
 
