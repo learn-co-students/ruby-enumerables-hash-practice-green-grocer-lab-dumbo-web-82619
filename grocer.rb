@@ -2,11 +2,11 @@ def consolidate_cart(cart)
   # code here  
   output = {}
   cart.each do |item_hash|
-    item_hash.each do |name, price_hash|
+    item_hash.each do |name, price|
       if output[name].nil?
-        output[name] = price_hash.merge({:count => 1})
+        output[name] = price.merge({:count => 1})
       else
-        hash[name][:count] += 1
+        output[name][:count] += 1
       end
     end
   end
