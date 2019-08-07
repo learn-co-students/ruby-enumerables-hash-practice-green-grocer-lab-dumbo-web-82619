@@ -17,16 +17,28 @@ end
 def apply_coupons(cart, coupons)
   # code here
   coupons.each do |coupon|
-    if cart.keys.include(coupon[:item])
-      if cart[coupon[:item]][:coint] >= 
-    end 
-  end 
-  cart 
+    if cart.keys.include?(coupon[:item])
+      if cart[coupon[:item]][:count] >= coupon[:num]
+        new_name = "#{coupon[:item]} W/COUPON"
+        if cart[new_name]
+          cart[new_name][:count] += coupon[:num]
+        else
+          cart[new_name] = {
+            price: coupon[:cost] / coupon[:num],
+            clearance: cart[coupon[:item]][:clearance],
+            count: coupon[:num]
+          }
+        end
+        cart[coupon[:item]][:count] -= coupon[:num]
+      end
+    end
+  end
+  cart
 end
 
 def apply_clearance(cart)
   # code here
-  
+   
 end
 
 def checkout(cart, coupons)
