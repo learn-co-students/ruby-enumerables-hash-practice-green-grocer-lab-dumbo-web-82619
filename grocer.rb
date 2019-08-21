@@ -15,7 +15,6 @@ def consolidate_cart(cart)
 end
 
 def apply_coupons(cart, coupons)
-  index = 0 
   coupons.each do |coupon|
     item = coupon[:item]
     cost = coupon[:cost]
@@ -45,9 +44,7 @@ end
 
 def checkout(cart, coupons)
   cart = consolidate_cart(cart)
-  if coupons 
-    cart = apply_coupons(cart, coupons)
-  end
+  cart = apply_coupons(cart, coupons)
   #binding.pry
   cart = apply_clearance(cart)
   #binding.pry
