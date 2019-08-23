@@ -1,15 +1,10 @@
-def consolidate_cart(cart)
-  # code here
-end
+require "pry"
 
-def apply_coupons(cart, coupons)
-  # code here
-end
-
-def apply_clearance(cart)
-  # code here
-end
-
-def checkout(cart, coupons)
-  # code here
-end
+def consolidate_cart (cart)
+  cart.each do |item|
+   # binding.pry
+    item.each do |item_hash|
+      binding.pry
+    end 
+  end
+end 
