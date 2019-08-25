@@ -17,22 +17,18 @@ end
 def apply_coupons(cart, coupons)
   coupons.each do |coupon|
     item_name = coupon[:item]
-    if cart[item_name] && cart[item_name][:count] >= coupon[:num]
-      binding.pry 
-      if !cart["#{item_name} W/COUPON"]
-       # binding.pry
+    if cart[item_name]
+      if cart[item_name][:count] >= coupon[:num] && !cart.has_key?("#{item} W/COUPON")
+        if !cart["#{item_name} W/COUPON"]
         cart["#{item_name} W/COUPON"] = 
-          {
-          :price => coupon[:cost] / coupon[:num],
-          :clearance => cart[item_name][:clearance],
-          :count => 1 
+          {:price => coupon[:cost] / coupon[:num], :clearance => cart[item_name][:clearance], :count => coupon[:num]
           } 
-        else
-          cart["#{item_name} W/COUPON"][:count] += 1
-        en
+          cart[item_name][:count] -= coupon[:num]
+        elsif coupon[:item][:count] >= coupon[:num] && cart.has_key?("#{item_name} W/COUPON")[:count]
+        cart["#{item} W/COUPON"][:count] += coupon[:num]
+        cart[item][:count] -= coupon[:num]
+        end
       end
-      cart[item_name][:count] -= coupon[:num]
-      # binding.pry
     end
   end 
   cart 
